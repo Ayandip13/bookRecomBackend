@@ -8,7 +8,8 @@ import job from "./lib/cron.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(express.json()); //Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option.
+app.use(express.json({ limit: "10mb" })); //Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option.
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cors());
 job.start();
 
