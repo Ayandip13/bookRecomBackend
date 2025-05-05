@@ -12,7 +12,6 @@ import User from "../models/User.model.js";
 
 const protectRoute = async (req, res, next) => {
   try {
-
     //get token
     const token = req.header("Authorization").replace("Bearer ", "");
     if (!token)
@@ -21,7 +20,7 @@ const protectRoute = async (req, res, next) => {
         .json({ message: "No authorization token, access denied" });
 
     // verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);  //If valid, it decodes the token and extracts the payload (e.g., userId).
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); //If valid, it decodes the token and extracts the payload (e.g., userId).
 
     //find user
 

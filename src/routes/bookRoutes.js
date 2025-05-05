@@ -64,7 +64,8 @@ router.get("/", protectRoute, async (req, res) => {
 //get recomemded books by the logged in user
 router.get("/user", protectRoute, async (req, res) => {
   try {
-    const books = await Book.find({ user: req.user._id }).sort({
+    const books = await Book.find({ user: req.user._id }). //Fetch all books created by the currently logged-in user
+    sort({
       createdAt: -1,
     });
     res.json(books);
